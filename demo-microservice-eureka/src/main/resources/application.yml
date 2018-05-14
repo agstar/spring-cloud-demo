@@ -10,7 +10,7 @@ eureka:
     register-with-eureka: true #是否将自己注册到Eureka服务中，本身就是所有无需注册
     fetch-registry: true #是否从Eureka中获取注册信息
     service-url: #Eureka客户端与Eureka服务端进行交互的地址
-      defaultZone: ${eureka.server}
+      defaultZone: ${eureka.server}   #默认值defaultZone，不能写成分割符形式
   instance:
     prefer-ip-address:  true  #将自己的ip地址注册到Eureka服务中
     ip-address: 127.0.0.1
