@@ -7,3 +7,9 @@
 
 #####user1 ：spring-boot:run -Dport=8281
 #####user2 ：spring-boot:run -Dport=8282
+
+#####sso1 ：spring-boot:run -Dport=8381
+#####sso2 ：spring-boot:run -Dport=8382
+
+#####apt-gateway1 ：spring-boot:run -Dport=6677
+#####apt-gateway2 ：spring-boot:run -Dport=6678
