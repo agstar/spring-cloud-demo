@@ -1,4 +1,4 @@
-package demomicroserviceeureka.user;
+package demo.microservice.user;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
