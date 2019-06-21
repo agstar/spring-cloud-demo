@@ -15,7 +15,7 @@ spring:
           uri: lb://demo-microservice-sso
           order: 1
           predicates:
-            - Path=/api/sso/**
+            - Path=/api/sso/{segment}
           filters:
             - StripPrefix=2
         - id: demo-microservice-user
