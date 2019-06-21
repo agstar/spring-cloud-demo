@@ -1,13 +1,17 @@
 package com.it.demosso.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
-    private String id;
+    private Integer id;
 
     private String username;
 
@@ -25,18 +29,4 @@ public class User {
 
     private String code;
 
-    public User(String id, String username, String password, String name, String email, Date birthday, String sex, Integer state, String code) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.email = email;
-        this.birthday = birthday;
-        this.sex = sex;
-        this.state = state;
-        this.code = code;
-    }
-
-    public User() {
-    }
 }

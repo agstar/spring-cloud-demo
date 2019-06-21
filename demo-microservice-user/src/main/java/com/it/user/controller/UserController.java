@@ -1,7 +1,7 @@
-package com.it.demouser.controller;
+package com.it.user.controller;
 
-import com.it.demouser.pojo.User;
-import com.it.demouser.service.UserService;
+import com.it.user.pojo.User;
+import com.it.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;

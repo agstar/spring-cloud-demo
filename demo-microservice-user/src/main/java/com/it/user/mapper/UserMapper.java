@@ -1,6 +1,6 @@
-package com.it.demouser.mapper;
+package com.it.user.mapper;
 
-import com.it.demouser.pojo.User;
+import com.it.user.pojo.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;

@@ -1,13 +1,13 @@
-package com.it.demosso;
+package com.it.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoSsoApplication {
+public class DemoUserApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoSsoApplication.class, args);
+        SpringApplication.run(DemoUserApplication.class, args);
     }
 
 }

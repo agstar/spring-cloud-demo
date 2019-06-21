@@ -1,4 +1,4 @@
-package com.it.demouser.util;
+package com.it.user.util;
 
 import org.springframework.context.ApplicationContext;
 

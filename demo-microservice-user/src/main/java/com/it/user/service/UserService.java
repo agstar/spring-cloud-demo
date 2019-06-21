@@ -1,7 +1,7 @@
-package com.it.demouser.service;
+package com.it.user.service;
 
-import com.it.demouser.mapper.UserMapper;
-import com.it.demouser.pojo.User;
+import com.it.user.mapper.UserMapper;
+import com.it.user.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
