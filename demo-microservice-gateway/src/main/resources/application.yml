@@ -1,0 +1,49 @@
+server:
+  port: ${port} #服务端口
+
+spring:
+  application:
+    name: demo-microservice-gateway #指定服务名
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: false
+          enabled: true
+      routes:
+        - id: demo-microservice-sso
+          uri: lb://demo-microservice-sso
+          order: 8000
+          predicates:
+            - Path=/api/sso
+          filters:
+            - StringPrefix=2
+        - id: demo-microservice-user
+            uri: lb://demo-microservice-user
+            order: 8001
+            predicates:
+              - Path=/api/user
+            filters:
+              - StringPrefix=2
+
+
+
+eureka:
+  client:
+    registerWithEureka: true #是否将自己注册到Eureka服务中，默认为true
+    fetchRegistry: true #是否从Eureka中获取注册信息，默认为true
+    serviceUrl: #Eureka客户端与Eureka服务端进行交互的地址
+      defaultZone: http://127.0.0.1:6868/eureka/,http://127.0.0.1:6869/eureka/
+  instance:
+    prefer-ip-address:  true  #将自己的ip地址注册到Eureka服务中
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port} #指定实例id
+
+logging:
+  level:
+    root: debug
+  #    org.springframework.web: DEBUG
+      org.springframework.cloud.gateway: trace
+      org.springframework.http.server.reactive: debug
+      org.springframework.web.reactive: debug
+      reactor.ipc.netty: debug
