@@ -1,20 +1,12 @@
-
 server:
   port: ${port} #服务端口
 spring:
+  security:
+    user:
+      name: "user"
+      password: "password"
   application:
-    name: demo-microservice-user #指定服务名
-  ################mysql 属性配置#########################
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
-    username: root
-    password: 123456
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+    name: demo-microservice-admin #指定服务名
 eureka:
   client:
     register-with-eureka: true #是否将自己注册到Eureka服务中，默认为true
@@ -29,24 +21,16 @@ eureka:
     instance-id: ${spring.application.name}:${server.port} #指定实例id
     lease-expiration-duration-in-seconds: 30 #续约更新时间间隔（默认30秒）
     lease-renewal-interval-in-seconds:  10 # 续约到期时间（默认90秒）
-
-# actuator配置
+    metadata-map:
+      "user.name": ${spring.security.user.name}         #These two are needed so that the server
+      "user.password": ${spring.security.user.password} #can access the protected client endpoints
 management:
+  endpoint:
+    health:
+      show-details: always
   endpoints:
     web:
       exposure:
-        include: "*" #暴露所有端点 默认是info,health
-  endpoint:
-    health:
-      show-details: always #默认是never
-info:
-  app:
-    version: 0.0.1-snapshop
-# 配置断路器超时时间，默认是1000（1秒）
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 2001
+        include: "*"
+
+

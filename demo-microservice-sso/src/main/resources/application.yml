@@ -3,7 +3,8 @@ server:
 spring:
   application:
     name: demo-microservice-sso #指定服务名
-
+  thymeleaf:
+    cache: false
 eureka:
   client:
     registerWithEureka: true #是否将自己注册到Eureka服务中，默认为true

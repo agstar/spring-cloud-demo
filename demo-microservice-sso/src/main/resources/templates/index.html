@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="body">
+<p>日志显示</p>
+</body>
+<script>
+    var prot = window.location.protocol;
+    var host = window.location.hostname;
+    var port = window.location.port;
+    // port = 10007;
+    // var base = $("base").attr("href").replace(/\//ig, "");
+    // var path = (prot=="http:"?"ws://":"wss://")+host+":"+port+"/"+base+"/websocketDeploy/flowSocket";
+    var path = "ws://" + host + ":" + port + "/flowSocket";
+    var flowSocket = new WebSocket(path);
+    // flow_socket = new WebSocket("ws://10.16.136.170:10007/websocketDeploy/flowSocket");
+    flowSocket.onopen = function (e) {
+        console.log('onopen');
+        flowSocket.send("#{deployInstanceId:1}")
+    };
+    flowSocket.onclose = function (e) {
+        console.log('onclose')
+    };
+    flowSocket.onmessage = function (e) {
+        console.log('onmessage');
+        var data = e.data;
+        var body = document.getElementById("body");
+        var p = document.createElement('p');
+        p.innerHTML = data;
+        body.appendChild(p);
+        document.documentElement.scrollTop = body.scrollHeight;
+        console.log(body.scrollHeight)
+        console.log(body.scrollTop)
+        console.log( document.documentElement.scrollTop)
+    };
+    flowSocket.onerror = function (e) {
+        console.log('onerror')
+    };
+    window.onbeforeunload = function () {
+        console.log('onbeforeunload')
+    };
+</script>
+</html>

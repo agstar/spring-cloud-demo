@@ -25,7 +25,13 @@ spring:
             - Path=/api/user/**
           filters:
             - StripPrefix=2
-
+        - id: demo-microservice-admin
+          uri: lb://demo-microservice-admin
+          order: 2
+          predicates:
+            - Path=/admin/**
+          filters:
+            - StripPrefix=2
 #        - id: rateLimit_route
 #          uri: http://localhost:8000
 #          order: 0
