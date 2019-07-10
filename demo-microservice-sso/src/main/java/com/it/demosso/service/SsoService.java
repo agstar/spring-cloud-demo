@@ -1,5 +1,6 @@
 package com.it.demosso.service;
 
+import com.it.demosso.client.UserClient;
 import com.it.demosso.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +12,8 @@ public class SsoService {
     //    @Autowired
 //    private RestTemplate restTemplate;
     @Autowired
-    private com.it.demosso.client.UserClient userclient;
+//    @Qualifier("UserClient")
+    private UserClient userclient;
 
     @Value("${server.port}")
     private int port;
@@ -24,22 +26,29 @@ public class SsoService {
      */
     public User checkUser(String username, String password) {
         User userByUsername = userclient.getUserByUsername(username);
-        if (userByUsername != null) {
+        /*if (userByUsername.getId() != null) {
             System.out.println(userByUsername);
-        }
+        }*/
         // 进行容错处理,以服务名称的方式调用
 //        String serviceId = "demo-microservice-user";
 //        User user = this.restTemplate.getForObject("http://" + serviceId + "/user/" + username, User.class);
-        User user = userByUsername;
-        user.setCode(port + "");
-        if (user != null) {
-            user.setCode(port + "");
-            String pwd = user.getPassword();
-            if (pwd.equals(password)) {
-                return user;
+        /*if (userByUsername.getId() != null) {
+            userByUsername.setCode(port + "");
+            String pwd = userByUsername.getPassword();
+            if (password.equals(pwd)) {
+                return userByUsername;
             }
+        } else {
+            userByUsername = new User();
+            userByUsername.setCode(port + "");
+        }*/
+        if(userByUsername!=null){
+            userByUsername.setCode(port + "");
+        }else{
+            userByUsername = new User();
+            userByUsername.setCode(port + "");
         }
-        return null;
+        return userByUsername;
     }
 
     /**

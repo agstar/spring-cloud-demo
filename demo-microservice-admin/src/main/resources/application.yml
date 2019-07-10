@@ -12,7 +12,7 @@ eureka:
     register-with-eureka: true #是否将自己注册到Eureka服务中，默认为true
     fetch-registry: true #是否从Eureka中获取注册信息，默认为true
     service-url: #Eureka客户端与Eureka服务端进行交互的地址
-      defaultZone:  http://127.0.0.1:6868/eureka/,http://127.0.0.1:6869/eureka/
+      defaultZone:  http://workstation:6868/eureka/,http://workstation:6869/eureka/
     eureka-server-connect-timeout-seconds: 60
     eureka-server-read-timeout-seconds: 60
   instance:
