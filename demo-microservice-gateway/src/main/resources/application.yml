@@ -18,6 +18,11 @@ spring:
             - Path=/api/sso/**
           filters:
             - StripPrefix=2
+        - id: demo-microservice-sso
+          uri: lb:ws://demo-microservice-sso
+          order: 1
+          predicates:
+            - Path=/flowSocket/**
         - id: demo-microservice-user
           uri: lb://demo-microservice-user
           order: 2
@@ -67,10 +72,13 @@ eureka:
     fetchRegistry: true #是否从Eureka中获取注册信息，默认为true
     serviceUrl: #Eureka客户端与Eureka服务端进行交互的地址
       defaultZone: http://workstation:6868/eureka/,http://workstation:6869/eureka/
+
   instance:
     prefer-ip-address:  true  #将自己的ip地址注册到Eureka服务中
     ip-address: 127.0.0.1
     instance-id: ${spring.application.name}:${server.port} #指定实例id
+    lease-renewal-interval-in-seconds: 5
+
 
 logging:
   level:

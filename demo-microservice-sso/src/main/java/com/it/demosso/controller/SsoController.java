@@ -6,10 +6,7 @@ import com.it.demosso.service.FlowSocket;
 import com.it.demosso.service.SsoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RefreshScope
@@ -41,7 +38,20 @@ public class SsoController {
 
     @PostMapping("msg")
     public String postMsg(String msg) {
+        System.out.println(msg);
         flowSocket.sendLightRecord(msg);
+        return "get";
+    }
+    @LogAop(content = "阈值配置页面")
+    @RequestMapping("test1")
+    public String test1(String msg) {
+        System.out.println(msg);
+        return "get";
+    }
+    @LogAop(content = "test2")
+    @RequestMapping("test2")
+    public String test2(String msg) {
+        System.out.println(msg);
         return "get";
     }
 

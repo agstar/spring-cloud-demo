@@ -18,13 +18,16 @@
     var flowSocket = new WebSocket(path);
     // flow_socket = new WebSocket("ws://10.16.136.170:10007/websocketDeploy/flowSocket");
     flowSocket.onopen = function (e) {
+        console.log(e);
         console.log('onopen');
         flowSocket.send("#{deployInstanceId:1}")
     };
     flowSocket.onclose = function (e) {
+        console.log(e);
         console.log('onclose')
     };
     flowSocket.onmessage = function (e) {
+
         console.log('onmessage');
         var data = e.data;
         var body = document.getElementById("body");
@@ -37,6 +40,7 @@
         console.log( document.documentElement.scrollTop)
     };
     flowSocket.onerror = function (e) {
+        console.log(e);
         console.log('onerror')
     };
     window.onbeforeunload = function () {

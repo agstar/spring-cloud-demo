@@ -30,6 +30,12 @@ hystrix:
           thread:
             timeoutInMilliseconds: 5000
 
+org:
+  apache:
+    tomcat:
+      websocket:
+        DEFAULT_BUFFER_SIZE: 10240000
+
 feign:
   hystrix:
     enabled: true
